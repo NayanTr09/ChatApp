@@ -1,5 +1,8 @@
 version: 0.0
 os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/new_chatapp/
 hooks:
   BeforeInstall:
     - location: /stopserver.sh
@@ -7,6 +10,3 @@ hooks:
   AfterInstall:
     - location: /startserver.sh
       timeout: 60
- 
-      
-  
