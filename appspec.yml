@@ -1,0 +1,15 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/new_app/
+hooks:
+  BeforeInstall:
+    - location: /stopserver.sh
+      timeout: 60
+  AfterInstall:
+    - location: /startserver.sh
+      timeout: 60
+ 
+      
+  
