@@ -8,7 +8,7 @@ pipeline {
               ssh -o StrictHostKeyChecking=no ubuntu@10.0.3.58
           ''' 
           sh '''
-             cd /home/ubuntu/ChatApp/new_chatapp/ ls
+             ls
           '''   
          }
       }
