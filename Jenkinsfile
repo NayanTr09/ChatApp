@@ -9,8 +9,10 @@ pipeline {
           '''
           sh '''
              cd /home/ubuntu/
+          '''  
+          sh '''
              git clone https://github.com/NayanTr09/ChatApp.git
-          '''    
+          '''
          }
       }
     }
