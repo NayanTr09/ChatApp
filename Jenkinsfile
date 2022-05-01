@@ -5,7 +5,7 @@ pipeline {
       steps {
         sshagent(['ssh']) {
           sh '''
-              ssh -o StrictHostKeyChecking=no ubuntu@10.0.3.58 sudo apt-get install python-pip
+              ssh -o StrictHostKeyChecking=no ubuntu@10.0.3.58 sudo apt-get -y install python-pip
           '''  
          }
       }
