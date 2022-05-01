@@ -5,7 +5,7 @@ pipeline {
       steps {
         sshagent(['ssh']) {
           sh '''
-              ssh -o StrictHostKeyChecking=no ubuntu@10.0.3.58 "sudo apt-get -y install python-pip python3-pip && cd /home/ubuntu/ChatApp/new_chatapp/ && sudo pip3 install -r requirements.txt && cd fundoo/ && python3 manage.py runserver 0.0.0.0:8000"
+              ssh -o StrictHostKeyChecking=no ubuntu@10.0.3.58 "git pull && sudo apt-get -y install python-pip python3-pip && cd /home/ubuntu/ChatApp/new_chatapp/ && sudo pip3 install -r requirements.txt && cd fundoo/ && python3 manage.py runserver 0.0.0.0:8000"
           
               
           '''  
