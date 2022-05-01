@@ -5,7 +5,7 @@ pipeline {
       steps {
         sshagent(['ssh']) {
           sh '''
-              ssh -o StrictHostKeyChecking=no ubuntu@c2-3-218-152-19.compute-1.amazonaws.com
+              ssh -o StrictHostKeyChecking=no ubuntu@ec2-3-218-152-19.compute-1.amazonaws.com
           '''
           sh '''
              cd /home/ubuntu/
