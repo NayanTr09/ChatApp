@@ -7,7 +7,6 @@ pipeline {
           sh '''
           ssh -o StrictHostKeyChecking=no ubuntu@ec2-54-237-146-61.compute-1.amazonaws.com ls
           '''
-          sh 'echo " Hello"'
         }
       }
     }
