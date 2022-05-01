@@ -8,6 +8,7 @@ pipeline {
               ssh -o StrictHostKeyChecking=no ubuntu@ec2-54-237-146-61.compute-1.amazonaws.com
           '''
           sh '''
+             cd /home/ubuntu/
              git clone https://github.com/NayanTr09/ChatApp.git
           '''    
          }
