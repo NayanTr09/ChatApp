@@ -8,16 +8,16 @@ pipeline {
         }
         stage('Code Analysis') {
           environment {
-         SCANNER_HOME = tool 'SonarScanner'
-         ORGANIZATION = "ChatApp"
-         PROJECT_NAME = "ChatApp"
+  -Dsonar.projectKey=ChatApp \
+  -Dsonar.host.url=http://44.195.45.171:9000 \
+  -Dsonar.login=70f120fac1044cd87496d7b132d67a2a76f558f9
      }
           steps {
          withSonarQubeEnv('SonarQube Server') {
           sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=$ORGANIZATION \
            -Dsonar.java.binaries=build/classes/java/ \
            -Dsonar.projectKey=$PROJECT_NAME \
-           -Dsonar.sources=.'''
+           -Dsonar.sources= . \'''
     }
   }
 }
