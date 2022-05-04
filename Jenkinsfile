@@ -2,7 +2,7 @@ pipeline {
   agent any
     stages {
         stage('SCM') {
-            steps {
+            steps { 
                 git url: 'https://github.com/NayanTr09/ChatApp.git'
             }
         }
