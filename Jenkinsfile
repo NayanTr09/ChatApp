@@ -9,8 +9,9 @@ pipeline {
         stage('Code Analysis') {
      }
           steps {
-         withSonarQubeEnv('SonarQube Server') {
-          sh '''$SCANNER_HOME/bin/sonar-scanner 
+           withSonarQubeEnv('SonarQube Server') {
+           sh '''$SCANNER_HOME/bin/sonar-scanner
+              '''
     }
   }
     
