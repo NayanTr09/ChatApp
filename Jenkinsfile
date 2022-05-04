@@ -1,7 +1,28 @@
 pipeline {
   agent any
-  stages {
-    stage('SSH to Backend, Install dependecies and Run Application') {
+    stages {
+        stage('SCM') {
+            steps {
+                git url: 'https://github.com/NayanTr09/ChatApp.git'
+            }
+        }
+        stage('SonarQube analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube Server') {
+                   
+                    }
+                }
+            }
+    
+        stage("Quality Gate") {
+            steps {
+                timeout(time: 1, unit: 'HOURS') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
+
+    stage('SSH to Backend, Install dependencies and Run Application') {
       steps {
         sshagent(['ssh']) {
           sh '''
