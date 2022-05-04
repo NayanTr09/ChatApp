@@ -14,7 +14,6 @@ pipeline {
   steps {
     withSonarQubeEnv('SonarQube Server') {
         sh '''$SCANNER_HOME/bin/sonar-scanner 
-        -Dsonar.java.binaries=build/classes/java/ \
         -Dsonar.projectKey=ChatApp 
         -Dsonar.sources=.'''
     }
