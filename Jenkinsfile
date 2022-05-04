@@ -7,13 +7,19 @@ pipeline {
             }
         }
         stage('Code Analysis') {
-          steps {
-           withSonarQubeEnv('SonarQube Server') {
-           sh '''$SCANNER_HOME/bin/sonar-scanner
-              '''
+          environment {
+    SCANNER_HOME = tool 'SonarScanner'
+    PROJECT_NAME = "ChatApp"
+  }
+  steps {
+    withSonarQubeEnv('SonarQube Server') {
+        sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=$ORGANIZATION \
+        -Dsonar.java.binaries=build/classes/java/ \
+        -Dsonar.projectKey=$PROJECT_NAME \
+        -Dsonar.sources=.'''
     }
   }
-    }
+
     
         stage("Quality Gate") {
             steps {
