@@ -19,7 +19,7 @@ pipeline {
         -Dsonar.sources=.'''
     }
   }
-
+ }
     
         stage("Quality Gate") {
             steps {
