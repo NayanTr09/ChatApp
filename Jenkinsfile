@@ -22,7 +22,7 @@ pipeline {
             }
         }
 
-    stage('SSH to Backend, Install dependencies and Run Application') {
+    stage('SSH to Backend, Install dependencies and Run Application') { 
       steps {
         sshagent(['ssh']) {
           sh '''
