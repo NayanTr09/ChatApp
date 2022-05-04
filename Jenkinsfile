@@ -6,19 +6,27 @@ pipeline {
                 git url: 'https://github.com/NayanTr09/ChatApp.git'
             }
         }
-        stage('SonarQube analysis') {
-            steps {
-                withSonarQubeEnv('SonarQube Server') {
-                   
-                    }
-                }
-            }
+        stage('Code Analysis') {
+          environment {
+         SCANNER_HOME = tool 'SonarScanner'
+         ORGANIZATION = "ChatApp"
+         PROJECT_NAME = "ChatApp"
+     }
+          steps {
+         withSonarQubeEnv('SSonarQube Server') {
+          sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=$ORGANIZATION \
+           -Dsonar.java.binaries=build/classes/java/ \
+           -Dsonar.projectKey=$PROJECT_NAME \
+           -Dsonar.sources=.'''
+    }
+  }
+}
     
         stage("Quality Gate") {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
                   
-                  waitForQualityGate abortPipeline: true, webhookSecretId: 'SonarQube Server'
+                  waitForQualityGate abortPipeline: true
                 }
             }
         }
