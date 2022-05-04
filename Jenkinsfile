@@ -13,7 +13,6 @@ pipeline {
           sh '''$SCANNER_HOME/bin/sonar-scanner 
     }
   }
-}
     
         stage("Quality Gate") {
             steps {
@@ -30,8 +29,7 @@ pipeline {
           sh '''
               ssh -o StrictHostKeyChecking=no ubuntu@10.0.3.58 "sudo systemctl stop chatapp && sudo apt-get -y install python-pip python3-pip && cd /home/ubuntu/ChatApp/new_chatapp/ && git pull && sudo pip3 install -r requirements.txt && sudo systemctl start chatapp"
           
-              
-          '''  
+              '''  
          }
       }
     }
