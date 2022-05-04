@@ -10,7 +10,7 @@ pipeline {
           environment {
     SCANNER_HOME = tool 'SonarScanner'
     PROJECT_NAME = "ChatApp"
-    ORGANIZATION = "ChatAppPipeline"
+    ORGANIZATION = "default"
   }
   steps {
     withSonarQubeEnv('SonarQube Server') {
