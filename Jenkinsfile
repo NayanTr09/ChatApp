@@ -10,12 +10,13 @@ pipeline {
           environment {
     SCANNER_HOME = tool 'SonarScanner'
     PROJECT_NAME = "ChatApp"
+    ORGANIZATION = "ChatApp"
   }
   steps {
     withSonarQubeEnv('SonarQube Server') {
         sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=$ORGANIZATION \
         -Dsonar.java.binaries=build/classes/java/ \
-        -Dsonar.projectKey=ChatApp
+        -Dsonar.projectKey=$PROJECT_NAME \
         -Dsonar.sources=.'''
     }
   }
