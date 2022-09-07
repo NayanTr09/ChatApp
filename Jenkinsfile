@@ -1,11 +1,6 @@
 pipeline {
   agent any
     stages {
-        stage('SCM') {
-            steps { 
-                git url: 'https://github.com/NayanTr09/ChatApp.git'
-            }
-        }
         stage('Code Analysis') {
           environment {
     SCANNER_HOME = tool 'SonarScanner'
